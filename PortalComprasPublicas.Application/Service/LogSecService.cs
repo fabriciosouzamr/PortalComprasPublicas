@@ -23,9 +23,9 @@ namespace PortalComprasPublicas.Domain.Service
 
         public async Task Adicionar(string rotina, string descricao)
         {
-            var logSec = new LogSec() { DataHora = DateTime.Now, Rotina = rotina, Descricao = descricao };
+            var logSec = new LogSec() { dataHora = DateTime.Now, rotina = rotina, descricao = descricao };
 
-            logSec.DataHora = DateTime.Now;
+            logSec.dataHora = DateTime.Now;
             await _logSecRepository.Adicionar(logSec);
         }
 

@@ -26,18 +26,18 @@
             <remarks>
             
             </remarks>
-            <returns>os produtos paginados</returns>
+            <returns>os clientes paginados</returns>
             <response code="200">Retorna os clientes cadastros paginados</response>       
             <response code="204">Retorna caso não encontre clientes cadastrados</response>
         </member>
         <member name="M:PortalComprasPublicasApi.Controllers.ClienteController.ObterPorId(System.Guid)">
             <summary>
-            Retorno o clientes de acordo id informado
+            Retorno o cliente de acordo id informado
             </summary>
             <remarks>
             
             </remarks>
-            <returns>os produtos paginados</returns>
+            <returns>o cliente pesquisa</returns>
             <response code="200">Retorna o cliente pesquisado</response>       
             <response code="204">Retorna caso não encontre o cliente pesquisado</response>
         </member>
@@ -52,7 +52,7 @@
                   "endereco": "endereço do cliente"
                }     
             </remarks>
-             <returns>Um produto cadastro</returns>
+             <returns>Um cliente cadastro</returns>
              <response code="201">Retorna o cliente cadastrado</response>
              <response code="400">Retorna erros de validação de campos do dominio</response>
         </member>
@@ -64,8 +64,8 @@
              Exemplo:
               {
                  "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-                  "nome": "nome do produto",
-                  "endereço": "descrição do produto"
+                  "nome": "nome do cliente",
+                  "endereco": "endereço do cliente"
                }     
             </remarks>
              <returns>Um produto Atualizado</returns>
@@ -75,20 +75,15 @@
         </member>
         <member name="M:PortalComprasPublicasApi.Controllers.ClienteController.Excluir(System.Guid)">
              <summary>
-             Atualiza um cliente
+             Exclui um cliente por id
              </summary>
              <remarks>
-             Exemplo:
-              {
-                 "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-                  "nome": "nome do produto",
-                  "endereço": "descrição do produto"
-               }     
+             
             </remarks>
-             <returns>Um produto Atualizado</returns>
+             <returns></returns>
              <response code="204">Não retornado os dados</response>
              <response code="400">Retorna erros de validação de campos do dominio</response>
-             <response code="40r">Retorna se o cliente que está sendo excluído não existir</response>
+             <response code="404">Retorna se o cliente que está sendo excluído não existir</response>
         </member>
         <member name="M:PortalComprasPublicasApi.Controllers.LogSecController.Agora">
             <summary>
@@ -120,6 +115,72 @@
             </remarks>
             <returns>Data e hora</returns>
             <response code="200">Retorna a data e hora atual</response>       
+        </member>
+        <member name="M:PortalComprasPublicasApi.Controllers.ProdutoController.ObterTodos(System.Int32,System.Int32)">
+            <summary>
+            Lista os produtos paginados, cada pagina tem no maximo 50 registros
+            </summary>
+            <remarks>
+            
+            </remarks>
+            <returns>os produtos paginados</returns>
+            <response code="200">Retorna os produtos cadastros paginados</response>       
+            <response code="204">Retorna caso não encontre produtos cadastrados</response>
+        </member>
+        <member name="M:PortalComprasPublicasApi.Controllers.ProdutoController.ObterPorId(System.Guid)">
+            <summary>
+            Retorno o produto de acordo id informado
+            </summary>
+            <remarks>
+            
+            </remarks>
+            <returns>o produto pesquisa</returns>
+            <response code="200">Retorna o cliente pesquisado</response>       
+            <response code="204">Retorna caso não encontre o cliente pesquisado</response>
+        </member>
+        <member name="M:PortalComprasPublicasApi.Controllers.ProdutoController.Adcionar(PortalComprasPublicas.Api.ViewModel.ProdutoViewModel)">
+             <summary>
+             Cria um novo produto
+             </summary>
+             <remarks>
+             Exemplo:
+              {
+                  "nome": "nome do produto",
+                  "preco": "preço do produto"
+               }     
+            </remarks>
+             <returns>Um produto cadastro</returns>
+             <response code="201">Retorna o produto cadastrado</response>
+             <response code="400">Retorna erros de validação de campos do dominio</response>
+        </member>
+        <member name="M:PortalComprasPublicasApi.Controllers.ProdutoController.Atualizar(PortalComprasPublicas.Api.ViewModel.ProdutoViewModel)">
+             <summary>
+             Atualiza um produto
+             </summary>
+             <remarks>
+             Exemplo:
+              {
+                 "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                  "nome": "nome do produto",
+                  "preco": "preço do produto"
+               }     
+            </remarks>
+             <returns>Um produto Atualizado</returns>
+             <response code="204">Não retornado os dados já que o mesmo já estão sendo enviados</response>
+             <response code="400">Retorna erros de validação de campos do dominio</response>
+             <response code="40r">Retorna se o produto que está sendo atualizado não existir</response>
+        </member>
+        <member name="M:PortalComprasPublicasApi.Controllers.ProdutoController.Excluir(System.Guid)">
+             <summary>
+             Exclui um produto por id
+             </summary>
+             <remarks>
+             
+            </remarks>
+             <returns></returns>
+             <response code="204">Não retornado os dados</response>
+             <response code="400">Retorna erros de validação de campos do dominio</response>
+             <response code="404">Retorna se o produto que está sendo excluído não existir</response>
         </member>
     </members>
 </doc>

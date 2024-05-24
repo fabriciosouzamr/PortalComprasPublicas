@@ -4,7 +4,7 @@ namespace PortalComprasPublicas.Domain.Entities
 {
     public class Cliente : EntityBase
     {
-        public string Nome { get; set; }
-        public string Endereco { get; set; }
+        public string nome { get; set; }
+        public string endereco { get; set; }
     }
 }

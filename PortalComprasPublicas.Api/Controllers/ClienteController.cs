@@ -3,7 +3,11 @@ using AutoMapper;
 
 using Azure.Core;
 
+using FluentValidation;
+
 using Microsoft.AspNetCore.Mvc;
+
+using PortalCompras.Produtos.boundedContext.Application.Validators;
 
 using PortalComprasPublicas.Api.ViewModel;
 using PortalComprasPublicas.Domain.Entities;
@@ -22,13 +26,16 @@ namespace PortalComprasPublicasApi.Controllers
         private readonly IClienteService _clienteService;
         private readonly ILogSecService _logSecService;
         private readonly IMapper _mapper;
+        IValidator<ClienteViewModel> _validator;
 
         public ClienteController(IClienteService clienteService,
                                  ILogSecService logSecService,
+                                 IValidator<ClienteViewModel> validator,
                                  IMapper mapper)
         {
             _clienteService = clienteService;
             _logSecService = logSecService;
+            _validator = validator;
             _mapper = mapper;
         }
 
@@ -112,9 +119,17 @@ namespace PortalComprasPublicasApi.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<ClienteViewModel>> Adcionar(ClienteViewModel cliente)
         {
+            var validation = await _validator.ValidateAsync(cliente);
+
+            if (!validation.IsValid)
+            {
+                return BadRequest(validation.GetErrors());
+            }
+
+            cliente.Id = Guid.Empty;
             var _cliente = await _clienteService.Adicionar(_mapper.Map<Cliente>(cliente));
 
-            await _logSecService.Adicionar(rotina: "Cliente - Adicionar", $"Id: {cliente.Id} Nome: {cliente.Nome}, Endereço: {cliente.Endereco}");
+            await _logSecService.Adicionar(rotina: "Cliente - Adicionar", $"Id: {cliente.Id} Nome: {cliente.nome}, Endereço: {cliente.endereco}");
 
             return CreatedAtAction(nameof(Adcionar), _mapper.Map<ClienteViewModel>(_cliente));
         }
@@ -141,12 +156,19 @@ namespace PortalComprasPublicasApi.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> Atualizar(ClienteViewModel cliente)
         {
+            var validation = await _validator.ValidateAsync(cliente);
+
+            if (!validation.IsValid)
+            {
+                return BadRequest(validation.GetErrors());
+            }
+
             var _cliente = await Obter(cliente.Id);
             if (_cliente == null) return NotFound();
 
             await _clienteService.Atualizar(_mapper.Map<Cliente>(cliente));
 
-            await _logSecService.Adicionar(rotina: "Cliente - Atualizar", $"Id: {cliente.Id} Nome: {cliente.Nome}, Endereço: {cliente.Endereco}");
+            await _logSecService.Adicionar(rotina: "Cliente - Atualizar", $"Id: {cliente.Id} Nome: {cliente.nome}, Endereço: {cliente.endereco}");
 
             return Ok(HttpStatusCode.NoContent);
         }

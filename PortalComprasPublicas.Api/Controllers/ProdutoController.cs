@@ -1,6 +1,10 @@
 using System.Net;
 using AutoMapper;
+
+using FluentValidation;
+
 using Microsoft.AspNetCore.Mvc;
+using PortalCompras.Produtos.boundedContext.Application.Validators;
 using PortalComprasPublicas.Api.ViewModel;
 using PortalComprasPublicas.Domain.Entities;
 using PortalComprasPublicas.Domain.Interface;
@@ -16,13 +20,16 @@ namespace PortalComprasPublicasApi.Controllers
         private readonly IProdutoService _produtoService;
         private readonly IMapper _mapper;
         private readonly ILogSecService _logSecService;
+        IValidator<ProdutoViewModel> _validator;
 
         public ProdutoController(IProdutoService ProdutoService,
                                  ILogSecService logSecService,
+                                 IValidator<ProdutoViewModel> validator,
                                  IMapper mapper)
         {
             _produtoService = ProdutoService;
             _logSecService = logSecService;
+            _validator = validator;
             _mapper = mapper;
         }
 
@@ -98,9 +105,17 @@ namespace PortalComprasPublicasApi.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<ProdutoViewModel>> Adcionar(ProdutoViewModel produto)
         {
+            var validation = await _validator.ValidateAsync(produto);
+
+            if (!validation.IsValid)
+            {
+                return BadRequest(validation.GetErrors());
+            }
+
+            produto.Id = Guid.NewGuid();
             var ProdutoRet = await _produtoService.Adicionar(_mapper.Map<Produto>(produto));
 
-            await _logSecService.Adicionar(rotina: "Produto - Adicionar", $"Id: {produto.Id} Nome: {produto.Nome}, Endereço: {produto.Preco.ToString("c")}");
+            await _logSecService.Adicionar(rotina: "Produto - Adicionar", $"Id: {produto.Id} Nome: {produto.nome}, Endereço: {produto.preco.ToString("c")}");
 
             return CreatedAtAction(nameof(Adcionar), _mapper.Map<ProdutoViewModel>(ProdutoRet));
         }
@@ -127,12 +142,19 @@ namespace PortalComprasPublicasApi.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> Atualizar(ProdutoViewModel produto)
         {
+            var validation = await _validator.ValidateAsync(produto);
+
+            if (!validation.IsValid)
+            {
+                return BadRequest(validation.GetErrors());
+            }
+
             var _Produto = await Obter(produto.Id);
             if (_Produto == null) return NotFound();
 
             await _produtoService.Atualizar(_mapper.Map<Produto>(produto));
 
-            await _logSecService.Adicionar(rotina: "Produto - Atualizar", $"Id: {produto.Id} Nome: {produto.Nome}, Endereço: {produto.Preco.ToString("c")}");
+            await _logSecService.Adicionar(rotina: "Produto - Atualizar", $"Id: {produto.Id} Nome: {produto.nome}, Endereço: {produto.preco.ToString("c")}");
 
             return Ok(HttpStatusCode.NoContent);
         }

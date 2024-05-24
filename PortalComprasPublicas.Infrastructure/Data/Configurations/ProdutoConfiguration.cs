@@ -12,11 +12,11 @@ namespace PortalComprasPublicas.Infrastructure.Data.Configurations
 
             builder.HasKey(c => c.Id);
 
-            builder.Property(c => c.Nome)
+            builder.Property(c => c.nome)
                 .IsRequired()
                 .HasColumnType("varchar(250)");
 
-            builder.Property(c => c.Preco)
+            builder.Property(c => c.preco)
                 .IsRequired()
                 .HasColumnType("numeric(18,2");
         }

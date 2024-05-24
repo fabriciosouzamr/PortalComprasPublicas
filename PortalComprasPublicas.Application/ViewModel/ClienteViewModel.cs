@@ -2,7 +2,7 @@ namespace PortalComprasPublicas.Api.ViewModel
 {
     public class ClienteViewModel : BaseViewModel
     {
-        public string Nome { get; set; }
-        public string Endereco { get; set; }
+        public string nome { get; set; }
+        public string endereco { get; set; }
     }
 }

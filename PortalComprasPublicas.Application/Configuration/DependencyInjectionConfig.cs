@@ -1,4 +1,6 @@
 using Microsoft.Extensions.DependencyInjection;
+using PortalCompras.Produtos.boundedContext.Application.Validators;
+
 using PortalComprasPublicas.Domain.Entities;
 using PortalComprasPublicas.Domain.Interface;
 using PortalComprasPublicas.Domain.Service;
@@ -28,6 +30,9 @@ namespace PortalComprasPublicas.Application.Configuration
             services.AddScoped<IProdutoService, ProdutoService>();
             services.AddScoped<IService<Produto>, ProdutoService>();
             services.AddScoped<ILogSecService, LogSecService>();
+
+            services.AddFluentValidation(typeof(ProdutoValidator));
+            services.AddFluentValidation(typeof(ClienteValidator));
 
             return services;
         }
