@@ -12,6 +12,9 @@ using PortalComprasPublicas.Domain.Interface;
 
 namespace PortalComprasPublicas.Domain.Service
 {
+    /// <summary>
+    /// Classe responsavel service do logsec, ela não ira herdar de baseservice e nem repositoryservice, por ter comportamento exclusivo.
+    /// </summary>
     public class LogSecService : ILogSecService
     {
         private ILogSecRepository _logSecRepository;

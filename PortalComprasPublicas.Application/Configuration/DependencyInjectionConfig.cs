@@ -10,6 +10,9 @@ using PortalComprasPublicas.Infrastructure.Data.Repository;
 
 namespace PortalComprasPublicas.Application.Configuration
 {
+    /// <summary>
+    /// Classe responsavel adicao dos objetos que serão injetados para dependência
+    /// </summary>
     public static class DependencyInjectionConfig
     {
         public static IServiceCollection ResolveDependencies(this IServiceCollection services)

@@ -3,6 +3,9 @@ using PortalComprasPublicas.Domain.Entity;
 
 namespace PortalComprasPublicas.Domain.Interface
 {
+    /// <summary>
+    /// Classe que implementa operações pra gerenciamento do produto
+    /// </summary>
     public interface IRepository<TEntity> : IDisposable where TEntity : EntityBase, new()
     {
         Task<TEntity> Adicionar(TEntity entity);

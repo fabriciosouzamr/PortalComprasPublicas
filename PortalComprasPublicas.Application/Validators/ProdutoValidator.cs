@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace PortalCompras.Produtos.boundedContext.Application.Validators
 {
     /// <summary>
-    /// Classe que define regras de validação das propriedades na criação ou atualizaçãoo de um produto
+    /// Classe que define regras de validação das propriedades na criação ou atualização de um produto
     /// </summary>
     public class ProdutoValidator : AbstractValidator<ProdutoViewModel>
     {

@@ -5,6 +5,9 @@ using PortalComprasPublicas.Domain.Interface;
 
 namespace PortalComprasPublicas.Domain.Service
 {
+    /// <summary>
+    /// Classe básica dos services, aqui terão os métodos comuns, os genéricos.
+    /// </summary>
     public abstract class BaseService<TEntity> : IService<TEntity> where TEntity : EntityBase, new()
     {
         private readonly IRepository<TEntity> _repository;

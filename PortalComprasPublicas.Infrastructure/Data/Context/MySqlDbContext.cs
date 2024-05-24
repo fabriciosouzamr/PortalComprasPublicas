@@ -3,6 +3,9 @@ using PortalComprasPublicas.Domain.Entities;
 
 namespace PortalComprasPublicas.Infrastructure.Data.Context
 {
+    /// <summary>
+    /// Essa classe de contexto administra os objetos entidades durante o tempo de execução, o que inclui preencher objetos com dados de um banco de dados, controlar alterações, e persistir dados para o banco de dados MySql
+    /// </summary>
     public class MySqlDbContext : DbContext
     {
         public MySqlDbContext()

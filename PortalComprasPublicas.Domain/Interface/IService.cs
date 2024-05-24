@@ -4,6 +4,9 @@ using PortalComprasPublicas.Domain.Entity;
 
 namespace PortalComprasPublicas.Domain.Interface
 {
+    /// <summary>
+    /// Interface que orquestra nossa camada Repository de infraestrutura que faz comunicação com o banco de dados. 
+    /// </summary>
     public interface IService<TEntity> : IDisposable where TEntity : EntityBase
     {
         Task<TEntity> Adicionar(TEntity entity);

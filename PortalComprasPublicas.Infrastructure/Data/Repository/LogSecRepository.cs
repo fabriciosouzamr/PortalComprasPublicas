@@ -8,6 +8,9 @@ using PortalComprasPublicas.Infrastructure.Data.Context;
 
 namespace PortalComprasPublicas.Infrastructure.Data.Repository
 {
+    /// <summary>
+    /// Classe responsavel por realizar transações em nossa base de dados para logsec
+    /// </summary>
     public class LogSecRepository : ILogSecRepository
     {
         SqlLiteDbContext _context;

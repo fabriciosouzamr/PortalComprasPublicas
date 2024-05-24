@@ -1,3 +1,7 @@
+/// <summary>
+/// Classe de inicialização da api web
+/// </summary>
+
 using System.Reflection;
 
 using Microsoft.EntityFrameworkCore;

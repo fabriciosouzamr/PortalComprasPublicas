@@ -4,6 +4,9 @@ using PortalComprasPublicas.Domain.Entities;
 
 namespace PortalComprasPublicas.Infrastructure.Data.Configurations
 {
+    /// <summary>
+    /// Classe que configura a entiidade produto para o padrao do banco MySql
+    /// </summary>
     public class ProdutoConfiguration : IEntityTypeConfiguration<Produto>
     {
         public void Configure(EntityTypeBuilder<Produto> builder)

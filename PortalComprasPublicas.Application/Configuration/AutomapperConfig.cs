@@ -5,6 +5,9 @@ using PortalComprasPublicas.Domain.Entity;
 
 namespace PortalComprasPublicas.Application.Configuration
 {
+    /// <summary>
+    /// Classe responsavel por mapeamento dos objetos
+    /// </summary>
     public class AutomapperConfig : Profile
     {
         public AutomapperConfig()

@@ -10,7 +10,7 @@ using PortalComprasPublicas.Api.ViewModel;
 namespace PortalCompras.Produtos.boundedContext.Application.Validators
 {
     /// <summary>
-    /// Classe que define regras de validação das propriedades na criação ou atualizaçãoo de um produto
+    /// Classe que define regras de validação das propriedades na criação ou atualização de um cliente
     /// </summary>
     public class ClienteValidator : AbstractValidator<ClienteViewModel>
     {

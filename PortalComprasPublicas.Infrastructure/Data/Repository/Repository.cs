@@ -7,6 +7,9 @@ using PortalComprasPublicas.Infrastructure.Data.Context;
 
 namespace PortalComprasPublicas.Infrastructure.Data.Repository
 {
+    /// <summary>
+    /// Classe básica responsavel por realizar transações em nossa base de dados, sera herdade do classe especificas
+    /// </summary>
     public abstract class Repository<TEntity> : IRepository<TEntity> where TEntity : EntityBase, new()
     {
         protected readonly MySqlDbContext Db;

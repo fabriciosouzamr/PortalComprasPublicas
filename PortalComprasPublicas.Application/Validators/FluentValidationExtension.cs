@@ -1,4 +1,4 @@
-﻿using System.Globalization;
+using System.Globalization;
 using FluentValidation.AspNetCore;
 using FluentValidation.Results;
 using Microsoft.Extensions.DependencyInjection;
@@ -6,7 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 namespace PortalCompras.Produtos.boundedContext.Application.Validators
 {
     /// <summary>
-    /// Classe de extensão pra fazer o registro das dependencia do FluentValdator que faz validação das propriedade enviados pelo produto
+    /// Classe de extensão pra fazer o registro das dependencia do FluentValdator que faz validação das propriedade enviados pelo produto e cliente
     /// </summary>
     public static class FluentValidationExtension
     {
