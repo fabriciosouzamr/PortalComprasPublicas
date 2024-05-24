@@ -3,18 +3,20 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34511.84
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PortalComprasPublicas.Api", "PortalComprasPublicas.Api\PortalComprasPublicas.Api.csproj", "{AD3C6046-FA89-4DC7-86CC-4B6F51AD316F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PortalComprasPublicas.Api", "PortalComprasPublicas.Api\PortalComprasPublicas.Api.csproj", "{AD3C6046-FA89-4DC7-86CC-4B6F51AD316F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PortalComprasPublicas.Domain", "PortalComprasPublicas.Domain\PortalComprasPublicas.Domain.csproj", "{1130AA8D-88AB-475D-ACE6-89B7E3DCC0C8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PortalComprasPublicas.Domain", "PortalComprasPublicas.Domain\PortalComprasPublicas.Domain.csproj", "{1130AA8D-88AB-475D-ACE6-89B7E3DCC0C8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PortalComprasPublicas.Infrastructure", "PortalComprasPublicas.Infrastructure\PortalComprasPublicas.Infrastructure.csproj", "{472481DE-5956-4ADD-BBF5-AB88A3E259BA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PortalComprasPublicas.Infrastructure", "PortalComprasPublicas.Infrastructure\PortalComprasPublicas.Infrastructure.csproj", "{472481DE-5956-4ADD-BBF5-AB88A3E259BA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PortalComprasPublicas.Tests", "PortalComprasPublicas.Tests\PortalComprasPublicas.Tests.csproj", "{AB21F607-0C1C-4601-9E59-503C4F5300B7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PortalComprasPublicas.Tests", "PortalComprasPublicas.Tests\PortalComprasPublicas.Tests.csproj", "{AB21F607-0C1C-4601-9E59-503C4F5300B7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{827B9F9D-4641-4F7E-8461-FFF0C598498A}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PortalComprasPublicas.Application", "PortalComprasPublicas.Application\PortalComprasPublicas.Application.csproj", "{AA8D357C-F7C4-4B7E-9AA6-4DB37A6C458F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -38,6 +40,10 @@ Global
 		{AB21F607-0C1C-4601-9E59-503C4F5300B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AB21F607-0C1C-4601-9E59-503C4F5300B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AB21F607-0C1C-4601-9E59-503C4F5300B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA8D357C-F7C4-4B7E-9AA6-4DB37A6C458F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA8D357C-F7C4-4B7E-9AA6-4DB37A6C458F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA8D357C-F7C4-4B7E-9AA6-4DB37A6C458F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA8D357C-F7C4-4B7E-9AA6-4DB37A6C458F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -18,6 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\PortalComprasPublicas.Application\PortalComprasPublicas.Application.csproj" />
     <ProjectReference Include="..\PortalComprasPublicas.Domain\PortalComprasPublicas.Domain.csproj" />
     <ProjectReference Include="..\PortalComprasPublicas.Infrastructure\PortalComprasPublicas.Infrastructure.csproj" />
   </ItemGroup>

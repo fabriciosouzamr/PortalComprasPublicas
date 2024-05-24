@@ -1,6 +1,7 @@
 using System.Net;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+
 using PortalComprasPublicas.Api.ViewModel;
 using PortalComprasPublicas.Domain.Entities;
 using PortalComprasPublicas.Domain.Interface;

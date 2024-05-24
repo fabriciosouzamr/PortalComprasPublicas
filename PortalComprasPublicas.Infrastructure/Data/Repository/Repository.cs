@@ -33,7 +33,7 @@ namespace PortalComprasPublicas.Infrastructure.Data.Repository
                 {
                     includedData = includedData.Include(include);
                 }
-            return await includedData.FirstOrDefaultAsync(p => p.Id == id);
+            return await includedData.AsNoTracking().FirstOrDefaultAsync(p => p.Id == id);
         }
 
         public virtual async Task<TEntity> GetById(Guid id)
