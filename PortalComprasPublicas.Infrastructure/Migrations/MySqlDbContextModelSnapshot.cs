@@ -25,7 +25,7 @@ namespace PortalComprasPublicas.Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("char(36)");
 
-                    b.Property<string>("Cpf")
+                    b.Property<string>("Endereco")
                         .IsRequired()
                         .HasColumnType("varchar(500)");
 

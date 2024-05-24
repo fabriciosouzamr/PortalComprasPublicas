@@ -12,20 +12,23 @@ namespace PortalComprasPublicasApi.Controllers
     public class ClienteController : ControllerBase
     {
 
-        private readonly IClienteRepository _clienteRepository;
+        private readonly IClienteService _clienteService;
+        private readonly ILogSecService _logSecService;
         private readonly IMapper _mapper;
 
-        public ClienteController(IClienteRepository clienteRepository,
+        public ClienteController(IClienteService clienteService,
+                                 ILogSecService logSecService,
                                  IMapper mapper)
         {
-            _clienteRepository = clienteRepository;
+            _clienteService = clienteService;
+            _logSecService = logSecService;
             _mapper = mapper;
         }
 
         [HttpGet]
         public async Task<IEnumerable<ClienteViewModel>> ObterTodos(int offset = 1, int limite = 50)
         {
-            return _mapper.Map<IEnumerable<ClienteViewModel>>(await _clienteRepository.ObterTodos(offset, limite));
+            return _mapper.Map<IEnumerable<ClienteViewModel>>(await _clienteService.ObterTodos(offset, limite));
         }
 
         [HttpGet("{id:guid}")]
@@ -45,7 +48,9 @@ namespace PortalComprasPublicasApi.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<ClienteViewModel>> Adcionar(ClienteViewModel cliente)
         {
-            var ClienteRet = await _clienteRepository.Adicionar(_mapper.Map<Cliente>(cliente));
+            var ClienteRet = await _clienteService.Adicionar(_mapper.Map<Cliente>(cliente));
+
+            await _logSecService.Adicionar(rotina: "Cliente - Adicionar", $"Id: {cliente.Id} Nome: {cliente.Nome}, Endereço: {cliente.Endereco}");
 
             return CreatedAtAction(nameof(Adcionar), _mapper.Map<ClienteViewModel>(ClienteRet));
         }
@@ -59,7 +64,9 @@ namespace PortalComprasPublicasApi.Controllers
             var _cliente = await Obter(cliente.Id);
             if (_cliente == null) return NotFound();
 
-            await _clienteRepository.Atualizar(_mapper.Map<Cliente>(cliente));
+            await _clienteService.Atualizar(_mapper.Map<Cliente>(cliente));
+
+            await _logSecService.Adicionar(rotina: "Cliente - Atualizar", $"Id: {cliente.Id} Nome: {cliente.Nome}, Endereço: {cliente.Endereco}");
 
             return Ok(HttpStatusCode.NoContent);
         }
@@ -72,11 +79,13 @@ namespace PortalComprasPublicasApi.Controllers
             var _cliente = await Obter(id);
             if (_cliente == null) return NotFound();
 
+            await _logSecService.Adicionar(rotina: "Cliente - Exluir", $"Id: {id}");
+
             return Ok(HttpStatusCode.NoContent);
         }
         private async Task<ClienteViewModel> Obter(Guid id)
         {
-            return _mapper.Map<ClienteViewModel>(await _clienteRepository.ObterPorId(id));
+            return _mapper.Map<ClienteViewModel>(await _clienteService.ObterPorId(id));
         }
     }
 }

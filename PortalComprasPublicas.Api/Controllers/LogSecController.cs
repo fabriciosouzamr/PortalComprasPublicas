@@ -25,10 +25,10 @@ namespace PortalComprasPublicasApi.Controllers
             _mapper = mapper;
         }
 
-        //[HttpGet]
-        //public async Task<IEnumerable<LogSecViewModel>> ObterTodos(int offset = 1, int limite = 50)
-        //{
-        //    return _mapper.Map<IEnumerable<LogSecViewModel>>(await _LogSecRepository.ObterTodos(offset, limite));
-        //}
+        [HttpGet]
+        public async Task<IEnumerable<LogSecViewModel>> ObterTodos(int offset = 1, int limite = 50)
+        {
+            return _mapper.Map<IEnumerable<LogSecViewModel>>(await _LogSecRepository.ObterTodos(offset, limite));
+        }
     }
 }

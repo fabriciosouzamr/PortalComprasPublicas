@@ -4,6 +4,7 @@ namespace PortalComprasPublicas.Domain.Interface
 {
     public interface ILogSecRepository
     {
-        Task<List<LogSec>> ListarTodosSqlLite(int offset = 1, int limite = 50);
+        Task<List<LogSec>> ObterTodos(int offset = 1, int limite = 50);
+        Task Adicionar(LogSec entity);
     }
 }

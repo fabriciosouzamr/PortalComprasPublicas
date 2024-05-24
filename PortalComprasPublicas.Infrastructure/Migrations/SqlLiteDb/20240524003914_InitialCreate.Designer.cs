@@ -8,25 +8,23 @@ using PortalComprasPublicas.Infrastructure.Data.Context;
 
 #nullable disable
 
-namespace PortalComprasPublicas.Infrastructure.Migrations
+namespace PortalComprasPublicas.Infrastructure.Migrations.SqlLiteDb
 {
-    [DbContext(typeof(MySqlDbContext))]
-    [Migration("20240523212222_InitialCreate")]
+    [DbContext(typeof(SqlLiteDbContext))]
+    [Migration("20240524003914_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.10")
-                .HasAnnotation("Relational:MaxIdentifierLength", 64);
+            modelBuilder.HasAnnotation("ProductVersion", "7.0.10");
 
             modelBuilder.Entity("PortalComprasPublicas.Domain.Entities.Cliente", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("char(36)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Cpf")
                         .IsRequired()
@@ -45,7 +43,7 @@ namespace PortalComprasPublicas.Infrastructure.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("char(36)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Nome")
                         .IsRequired()
@@ -57,6 +55,28 @@ namespace PortalComprasPublicas.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Produtos", (string)null);
+                });
+
+            modelBuilder.Entity("PortalComprasPublicas.Domain.Entity.LogSec", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("DataHora")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Descricao")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Rotina")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("LogSecs");
                 });
 #pragma warning restore 612, 618
         }

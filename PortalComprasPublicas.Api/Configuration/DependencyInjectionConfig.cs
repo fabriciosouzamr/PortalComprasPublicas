@@ -20,13 +20,13 @@ namespace PortalComprasPublicas.Api.Configuration
             services.AddScoped<IRepository<Cliente>, ClienteRepository>();
             services.AddScoped<IProdutoRepository, ProdutoRepository>();
             services.AddScoped<IRepository<Produto>, ProdutoRepository>();
-            services.AddScoped<IVendaRepository, VendaRepository>();
-            services.AddScoped<IRepository<Venda>, VendaRepository>();
+            services.AddScoped<ILogSecRepository, LogSecRepository>();
 
             services.AddScoped<IClienteService, ClienteService>();
             services.AddScoped<IService<Cliente>, ClienteService>();
             services.AddScoped<IProdutoService, ProdutoService>();
             services.AddScoped<IService<Produto>, ProdutoService>();
+            services.AddScoped<ILogSecService, LogSecService>();
 
             return services;
         }

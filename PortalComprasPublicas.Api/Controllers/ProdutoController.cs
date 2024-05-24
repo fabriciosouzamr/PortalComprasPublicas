@@ -15,11 +15,14 @@ namespace PortalComprasPublicasApi.Controllers
 
         private readonly IProdutoService _produtoService;
         private readonly IMapper _mapper;
+        private readonly ILogSecService _logSecService;
 
-        public ProdutoController(ProdutoService ProdutoService,
+        public ProdutoController(IProdutoService ProdutoService,
+                                 ILogSecService logSecService,
                                  IMapper mapper)
         {
             _produtoService = ProdutoService;
+            _logSecService = logSecService;
             _mapper = mapper;
         }
 
@@ -44,9 +47,11 @@ namespace PortalComprasPublicasApi.Controllers
         [HttpPost]
         [ProducesResponseType(typeof(ProdutoViewModel), StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult<ProdutoViewModel>> Adcionar(ProdutoViewModel Produto)
+        public async Task<ActionResult<ProdutoViewModel>> Adcionar(ProdutoViewModel produto)
         {
-            var ProdutoRet = await _produtoService.Adicionar(_mapper.Map<Produto>(Produto));
+            var ProdutoRet = await _produtoService.Adicionar(_mapper.Map<Produto>(produto));
+
+            await _logSecService.Adicionar(rotina: "Produto - Adicionar", $"Id: {produto.Id} Nome: {produto.Nome}, Endereço: {produto.Preco.ToString("c")}");
 
             return CreatedAtAction(nameof(Adcionar), _mapper.Map<ProdutoViewModel>(ProdutoRet));
         }
@@ -55,12 +60,14 @@ namespace PortalComprasPublicasApi.Controllers
         [ProducesResponseType(typeof(ProdutoViewModel), StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> Atualizar(ProdutoViewModel Produto)
+        public async Task<IActionResult> Atualizar(ProdutoViewModel produto)
         {
-            var _Produto = await Obter(Produto.Id);
+            var _Produto = await Obter(produto.Id);
             if (_Produto == null) return NotFound();
 
-            await _produtoService.Atualizar(_mapper.Map<Produto>(Produto));
+            await _produtoService.Atualizar(_mapper.Map<Produto>(produto));
+
+            await _logSecService.Adicionar(rotina: "Produto - Atualizar", $"Id: {produto.Id} Nome: {produto.Nome}, Endereço: {produto.Preco.ToString("c")}");
 
             return Ok(HttpStatusCode.NoContent);
         }
@@ -72,6 +79,8 @@ namespace PortalComprasPublicasApi.Controllers
         {
             var _Produto = await Obter(id);
             if (_Produto == null) return NotFound();
+
+            await _logSecService.Adicionar(rotina: "Produto - Excluir", $"Id: {id}");
 
             return Ok(HttpStatusCode.NoContent);
         }

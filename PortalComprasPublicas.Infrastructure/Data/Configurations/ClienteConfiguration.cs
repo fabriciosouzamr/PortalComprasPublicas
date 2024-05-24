@@ -16,7 +16,7 @@ namespace PortalComprasPublicas.Infrastructure.Data.Configurations
                 .IsRequired()
                 .HasColumnType("varchar(250)");
 
-            builder.Property(c => c.Cpf)
+            builder.Property(c => c.Endereco)
                 .IsRequired()
                 .HasColumnType("varchar(500)");
         }

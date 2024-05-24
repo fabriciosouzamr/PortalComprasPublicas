@@ -1,6 +1,7 @@
 using AutoMapper;
 using PortalComprasPublicas.Api.ViewModel;
 using PortalComprasPublicas.Domain.Entities;
+using PortalComprasPublicas.Domain.Entity;
 
 namespace PortalComprasPublicas.Api.Configuration
 {
@@ -20,8 +21,7 @@ namespace PortalComprasPublicas.Api.Configuration
         {
             CreateMap<Cliente, ClienteViewModel>().ReverseMap();
             CreateMap<Produto, ProdutoViewModel>().ReverseMap();
-            CreateMap<Venda, VendaViewModel>().ReverseMap();
-            CreateMap<VendaItem, VendaItemViewModel>().ReverseMap();
+            CreateMap<LogSec, LogSecViewModel>().ReverseMap();
         }
     }
 }
