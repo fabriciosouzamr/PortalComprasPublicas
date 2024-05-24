@@ -1,4 +1,7 @@
-// """
+/// <summary>
+/// Classe de teste de controller de cliente
+/// </summary>
+
 using PortalComprasPublicas.Tests.FakeDb;
 using System;
 using System.Collections.Generic;
@@ -53,9 +56,9 @@ namespace PortalComprasPublicas.Tests
         public void GetProdutos_RetornaTodosItens_OkResult()
         {
             // Act
-            var okResult = _clientesController.ObterTodos(0, 1).Result;
+            var okResult = _clientesController.ObterTodos(0, 1).Result as OkObjectResult;
             // Assert
-            var items = Assert.IsType<List<ClienteViewModel>>(okResult);
+            var items = Assert.IsType<List<ClienteViewModel>>(okResult.Value);
             Assert.Equal(1, items.Count);
         }
 

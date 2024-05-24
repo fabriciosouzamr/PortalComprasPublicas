@@ -1,4 +1,7 @@
-// """
+/// <summary>
+/// Classe de teste de controller de produto
+/// </summary>
+/// 
 using PortalComprasPublicas.Tests.FakeDb;
 using System;
 using System.Collections.Generic;
@@ -45,17 +48,17 @@ namespace PortalComprasPublicas.Tests
         public void GetProdutos_RetornaOkResult()
         {
             // Act
-            var okResult = _ProdutosController.ObterTodos();
+            var okResult = _ProdutosController.ObterTodos().Result;
             // Assert
-            Assert.IsType<OkObjectResult>(okResult.Result);
+            Assert.IsType<OkObjectResult>(okResult);
         }
         [Fact]
         public void GetProdutos_RetornaTodosItens_OkResult()
         {
             // Act
-            var okResult = _ProdutosController.ObterTodos(0, 5).Result;
+            var okResult = _ProdutosController.ObterTodos(0, 5).Result as OkObjectResult;
             // Assert
-            var items = Assert.IsType<List<ProdutoViewModel>>(okResult);
+            var items = Assert.IsType<List<ProdutoViewModel>>(okResult.Value);
             Assert.Equal(5, items.Count);
         }
 

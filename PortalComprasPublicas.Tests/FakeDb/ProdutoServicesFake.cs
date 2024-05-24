@@ -1,5 +1,7 @@
-// """
-
+/// <summary>
+/// Classe fake simulando o repository de produto
+/// </summary>
+/// 
 using System;
 using System.Collections.Generic;
 using System.Linq;
