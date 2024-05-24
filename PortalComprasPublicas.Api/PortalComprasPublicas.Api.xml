@@ -4,6 +4,16 @@
         <name>PortalComprasPublicas.Api</name>
     </assembly>
     <members>
+        <member name="T:PortalComprasPublicas.Api.Configuration.AutomapperConfigAssistent">
+            <summary>
+            Classe auxiliar ativação do automapper
+            </summary>
+        </member>
+        <member name="M:PortalComprasPublicas.Application.Configuration.DependencyInjectionConfig.AddDependencyInjectionConfig(Microsoft.AspNetCore.Builder.WebApplicationBuilder)">
+            <summary>
+            Classe auxiliar da injeção de dependência do objetos usados na Api
+            </summary>
+        </member>
         <member name="T:PortalComprasPublicasApi.Controllers.ClienteController">
             <summary>
             Esta classe foi desenvolvida pra cadastro de cliente em uma base MySql
@@ -181,6 +191,11 @@
              <response code="204">Não retornado os dados</response>
              <response code="400">Retorna erros de validação de campos do dominio</response>
              <response code="404">Retorna se o produto que está sendo excluído não existir</response>
+        </member>
+        <member name="T:Program">
+            <summary>
+            Classe de inicialização da api web
+            </summary>
         </member>
     </members>
 </doc>

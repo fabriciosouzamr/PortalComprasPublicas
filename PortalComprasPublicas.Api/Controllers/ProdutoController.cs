@@ -59,9 +59,15 @@ namespace PortalComprasPublicasApi.Controllers
         /// <response code="204">Retorna caso não encontre produtos cadastrados</response>
 
         [HttpGet]
-        public async Task<IEnumerable<ProdutoViewModel>> ObterTodos(int offset = 1, int limite = 50)
+        [ProducesResponseType((StatusCodes.Status200OK), Type = typeof(List<dynamic>))]
+        [ProducesResponseType((StatusCodes.Status404NotFound))]
+        public async Task<IActionResult> ObterTodos(int offset = 1, int limite = 50)
         {
-            return _mapper.Map<IEnumerable<ProdutoViewModel>>(await _produtoService.ObterTodos(offset, limite));
+            var produtos = _mapper.Map<IEnumerable<ProdutoViewModel>>(await _produtoService.ObterTodos(offset, limite));
+
+            if (!produtos.Any()) return NotFound();
+
+            return Ok(produtos);
         }
 
         /// <summary>

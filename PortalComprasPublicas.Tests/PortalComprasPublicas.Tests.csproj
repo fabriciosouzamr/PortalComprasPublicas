@@ -22,4 +22,9 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\PortalComprasPublicas.Api\PortalComprasPublicas.Api.csproj" />
+    <ProjectReference Include="..\PortalComprasPublicas.Application\PortalComprasPublicas.Application.csproj" />
+  </ItemGroup>
+
 </Project>
