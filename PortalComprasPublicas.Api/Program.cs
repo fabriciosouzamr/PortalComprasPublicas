@@ -1,4 +1,7 @@
+using System.Reflection;
+
 using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models;
 
 using PortalComprasPublicas.Api.Configuration;
 using PortalComprasPublicas.Application.Configuration;
@@ -8,8 +11,27 @@ using PortalComprasPublicas.Infrastructure.Data.Context;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
+
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new OpenApiInfo
+    {
+
+        Title = "Microserviço WebApi RestFul",
+        Version = "v1",
+        Description = "Microserviços desenvolvido pra cadastro de clientes e produtos, com log de alterações. O LogSec está usando uma base SqlLite. Inclusão, atualização e exclusão de clientes e produtos serão registros no LogSec.",
+        Contact = new OpenApiContact()
+        {
+            Name = "Fabrício Souza Moreira",
+            Url = new Uri("https://fabriciosouzamr.com.br/"),
+            Email = "fabriciosouzamr@yahoo.com.br",
+        }
+    });
+    c.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory,
+    $"{Assembly.GetExecutingAssembly().GetName().Name}.xml"));
+});
+
 builder.AddAutoMapperConfig();
 builder.AddDependencyInjectionConfig();
 
@@ -31,7 +53,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI(c =>
     {
         c.SwaggerEndpoint("/swagger/v1/swagger.json", "Meu Projeto API v1");
-        c.RoutePrefix = string.Empty; // Abre o Swagger na raiz do aplicativo
+        c.RoutePrefix = string.Empty;
     });
 }
 

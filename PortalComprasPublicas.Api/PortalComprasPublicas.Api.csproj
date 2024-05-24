@@ -4,6 +4,8 @@
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <DocumentationFile>D:\Clientes\Portal de Compras Públicas\PortalComprasPublicas.Api\PortalComprasPublicas.Api.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -21,6 +23,12 @@
     <ProjectReference Include="..\PortalComprasPublicas.Application\PortalComprasPublicas.Application.csproj" />
     <ProjectReference Include="..\PortalComprasPublicas.Domain\PortalComprasPublicas.Domain.csproj" />
     <ProjectReference Include="..\PortalComprasPublicas.Infrastructure\PortalComprasPublicas.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="PortalComprasPublicas.Api.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

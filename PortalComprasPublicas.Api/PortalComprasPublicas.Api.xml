@@ -1,0 +1,125 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PortalComprasPublicas.Api</name>
+    </assembly>
+    <members>
+        <member name="T:PortalComprasPublicasApi.Controllers.ClienteController">
+            <summary>
+            Esta classe foi desenvolvida pra cadastro de cliente em uma base MySql
+            </summary>
+        </member>
+        <member name="M:PortalComprasPublicasApi.Controllers.ClienteController.Agora">
+            <summary>
+            Retorna data e hora atual
+            </summary>
+            <remarks>
+            
+            </remarks>
+            <returns>Data e hora</returns>
+            <response code="200">Retorna a data e hora atual</response>       
+        </member>
+        <member name="M:PortalComprasPublicasApi.Controllers.ClienteController.ObterTodos(System.Int32,System.Int32)">
+            <summary>
+            Lista os clientes paginados, cada pagina tem no maximo 50 registros
+            </summary>
+            <remarks>
+            
+            </remarks>
+            <returns>os produtos paginados</returns>
+            <response code="200">Retorna os clientes cadastros paginados</response>       
+            <response code="204">Retorna caso não encontre clientes cadastrados</response>
+        </member>
+        <member name="M:PortalComprasPublicasApi.Controllers.ClienteController.ObterPorId(System.Guid)">
+            <summary>
+            Retorno o clientes de acordo id informado
+            </summary>
+            <remarks>
+            
+            </remarks>
+            <returns>os produtos paginados</returns>
+            <response code="200">Retorna o cliente pesquisado</response>       
+            <response code="204">Retorna caso não encontre o cliente pesquisado</response>
+        </member>
+        <member name="M:PortalComprasPublicasApi.Controllers.ClienteController.Adcionar(PortalComprasPublicas.Api.ViewModel.ClienteViewModel)">
+             <summary>
+             Cria um novo cliente
+             </summary>
+             <remarks>
+             Exemplo:
+              {
+                  "nome": "nome do cliente",
+                  "endereco": "endereço do cliente"
+               }     
+            </remarks>
+             <returns>Um produto cadastro</returns>
+             <response code="201">Retorna o cliente cadastrado</response>
+             <response code="400">Retorna erros de validação de campos do dominio</response>
+        </member>
+        <member name="M:PortalComprasPublicasApi.Controllers.ClienteController.Atualizar(PortalComprasPublicas.Api.ViewModel.ClienteViewModel)">
+             <summary>
+             Atualiza um cliente
+             </summary>
+             <remarks>
+             Exemplo:
+              {
+                 "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                  "nome": "nome do produto",
+                  "endereço": "descrição do produto"
+               }     
+            </remarks>
+             <returns>Um produto Atualizado</returns>
+             <response code="204">Não retornado os dados já que o mesmo já estão sendo enviados</response>
+             <response code="400">Retorna erros de validação de campos do dominio</response>
+             <response code="40r">Retorna se o cliente que está sendo atualizado não existir</response>
+        </member>
+        <member name="M:PortalComprasPublicasApi.Controllers.ClienteController.Excluir(System.Guid)">
+             <summary>
+             Atualiza um cliente
+             </summary>
+             <remarks>
+             Exemplo:
+              {
+                 "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                  "nome": "nome do produto",
+                  "endereço": "descrição do produto"
+               }     
+            </remarks>
+             <returns>Um produto Atualizado</returns>
+             <response code="204">Não retornado os dados</response>
+             <response code="400">Retorna erros de validação de campos do dominio</response>
+             <response code="40r">Retorna se o cliente que está sendo excluído não existir</response>
+        </member>
+        <member name="M:PortalComprasPublicasApi.Controllers.LogSecController.Agora">
+            <summary>
+            Retorna data e hora atual
+            </summary>
+            <remarks>
+            
+            </remarks>
+            <returns>Data e hora</returns>
+            <response code="200">Retorna a data e hora atual</response>       
+        </member>
+        <member name="M:PortalComprasPublicasApi.Controllers.LogSecController.ObterTodos(System.Int32,System.Int32)">
+            <summary>
+            Lista os losgs paginados, cada pagina tem no maximo 50 registros
+            </summary>
+            <remarks>
+            
+            </remarks>
+            <returns>os produtos paginados</returns>
+            <response code="200">Retorna os logs cadastros paginados</response>       
+            <response code="204">Retorna caso não encontre logs cadastrados</response>
+        </member>
+        <member name="M:PortalComprasPublicasApi.Controllers.ProdutoController.Agora">
+            <summary>
+            Retorna data e hora atual
+            </summary>
+            <remarks>
+            
+            </remarks>
+            <returns>Data e hora</returns>
+            <response code="200">Retorna a data e hora atual</response>       
+        </member>
+    </members>
+</doc>
